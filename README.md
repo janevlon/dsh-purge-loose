@@ -13,7 +13,7 @@ Apache-2.0，见 [LICENSE](./LICENSE)，署名见 [NOTICE](./NOTICE)。
 
 ```sh
 # 本仓库私有期间：用 git 安装
-dsh plugin --profile web add git@github.com:bamboostrip/dsh-purge.git
+dsh plugin --profile web add git@github.com:bamboostrip/dsh-purge-loose.git
 # npm 发布后：
 pnpm add dsh-purge-loose
 ```
