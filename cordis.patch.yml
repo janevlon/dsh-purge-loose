@@ -1,7 +1,7 @@
-# dsh-purge bundle patch
+# dsh-purge-loose bundle patch
 #
 # 清洗 + 演练台都在本插件内（lib/redteam、presets/redteam、skills/redteam）。
-# 只装 dsh-purge，不外接、不 link 其它红队包。
+# 只装 dsh-purge-loose，不外接、不 link 其它红队包。
 
 # 关掉旧的独立红队包行（若用户以前装过 dsh-redteam-mode）
 - id: redteam-store
@@ -32,8 +32,8 @@
 
 # 本体 insert 写在用户层 profile/cordis.patch.yml（postinstall / 演练台自愈补）。
 # 这里只改已入队行的 inject/config。再 insert 一次会 already queued（#152 / #154 / #159）。
-- id: dsh-purge
-  name: 'dsh-purge'
+- id: dsh-purge-loose
+  name: 'dsh-purge-loose'
   inject: [systemPrompt, tools]
   config:
     enabled: true
@@ -55,15 +55,15 @@
 
 - insert:
     # 演练台：预设 + 技能落地（本插件 lib/redteam）
-    - id: dsh-purge-redteam
-      name: dsh-purge/redteam
+    - id: dsh-purge-loose-redteam
+      name: dsh-purge-loose/redteam
 
     # 演练台事实库（SQLite），数据在 $DSH_HOME/redteam
-    - id: dsh-purge-redteam-store
-      name: dsh-purge/redteam/store
+    - id: dsh-purge-loose-redteam-store
+      name: dsh-purge-loose/redteam/store
       config:
         root: !!js dshHomePath('redteam')
 
     # 演练台 HTTP 桥 POST /redteam/api
-    - id: dsh-purge-redteam-ui
-      name: dsh-purge/redteam/ui
+    - id: dsh-purge-loose-redteam-ui
+      name: dsh-purge-loose/redteam/ui

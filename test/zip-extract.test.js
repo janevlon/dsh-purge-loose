@@ -53,7 +53,7 @@ function storedZip(entries) {
 }
 
 test("zip 目录条目建目录而不是空文件", () => {
-  const dest = fs.mkdtempSync(path.join(os.tmpdir(), "dsh-purge-zip-"));
+  const dest = fs.mkdtempSync(path.join(os.tmpdir(), "dsh-purge-loose-zip-"));
   try {
     extractZipBuffer(storedZip([
       { name: "root/", dir: true },

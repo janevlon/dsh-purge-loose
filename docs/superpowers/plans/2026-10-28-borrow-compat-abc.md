@@ -13,7 +13,7 @@
 ## Global Constraints
 
 - 不修改 `lib/net-scope.js`（E 坚决不用）。
-- 不动 `dsh-purge-upstream`（仅参照）。
+- 不动 `dsh-purge-loose-upstream`（仅参照）。
 - 每个 Task 独立可测，频繁提交。
 
 ## Review Focus
@@ -21,7 +21,7 @@
 - profile 已有本体 insert 时不重复写（幂等）。
 - 任意 `app.asar` 路径不误判 desktop。
 - zip 目录条目不写成空文件。
-- pnpm allowBuilds 同时覆盖 `dsh-purge` 与 `dsh-purge@codeload`。
+- pnpm allowBuilds 同时覆盖 `dsh-purge-loose` 与 `dsh-purge-loose@codeload`。
 - D 破坏性项（toolFilter 删除）必须有版本守卫，否则跳过。
 
 ---
@@ -46,11 +46,11 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { profileHasPurgeBodyInsert, rewritePnpmAllowBuilds } from "../lib/profile-insert.js";
 test("已有本体 insert 不重复", () => {
-  assert.equal(profileHasPurgeBodyInsert("- insert:\n    - id: dsh-purge\n"), true);
+  assert.equal(profileHasPurgeBodyInsert("- insert:\n    - id: dsh-purge-loose\n"), true);
 });
 test("allowBuilds 覆盖 tarball spec", () => {
-  const out = rewritePnpmAllowBuilds("allowBuilds:\n  dsh-purge: true\n");
-  assert.match(out, /dsh-purge@https:\/\/codeload/);
+  const out = rewritePnpmAllowBuilds("allowBuilds:\n  dsh-purge-loose: true\n");
+  assert.match(out, /dsh-purge-loose@https:\/\/codeload/);
 });
 ```
 
@@ -61,7 +61,7 @@ Expected: FAIL with cannot find module / function missing
 
 - [ ] **Step 3: Write minimal implementation**
 
-从 upstream `lib/profile-insert.js:1-233` 抄思路：`INSERT_BLOCK` 最小 config（enabled/stripMnemon/capabilityProtocol/hooksDenyBypass），`profileHasPurgeBodyInsert` 认 `id: dsh-purge(-main)` 或 `name: dsh-purge`，`rewritePnpmAllowBuilds` 同时补 tarball spec。`scripts/ensure-profile-bundle.mjs` 抄 upstream 1-82。
+从 upstream `lib/profile-insert.js:1-233` 抄思路：`INSERT_BLOCK` 最小 config（enabled/stripMnemon/capabilityProtocol/hooksDenyBypass），`profileHasPurgeBodyInsert` 认 `id: dsh-purge-loose(-main)` 或 `name: dsh-purge-loose`，`rewritePnpmAllowBuilds` 同时补 tarball spec。`scripts/ensure-profile-bundle.mjs` 抄 upstream 1-82。
 
 - [ ] **Step 4: Run test to verify it passes**
 

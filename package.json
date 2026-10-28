@@ -1,7 +1,9 @@
 {
-  "name": "dsh-purge",
-  "version": "1.1.71",
-  "description": "DeepSeek Harness 破甲",
+  "name": "dsh-purge-loose",
+  "version": "0.1.0",
+  "description": "DeepSeek Harness 破甲（宽松版）. Forked from YuJunZhiXue/dsh-purge.",
+  "author": "bamboostrip",
+  "packageManager": "pnpm@12.8.1",
   "type": "module",
   "main": "lib/index.js",
   "exports": {
@@ -16,13 +18,11 @@
     "./package.json": "./package.json"
   },
   "bin": {
-    "dsh-purge": "bin/dsh-purge.js"
+    "dsh-purge-loose": "bin/dsh-purge-loose.js"
   },
   "files": [
     "lib",
-    "!lib/default-prompt-inject.md",
     "bin",
-    "docs",
     "presets",
     "skills",
     "scripts",
@@ -30,10 +30,8 @@
     "cordis.patch.yml",
     "screenshots.json",
     "README.md",
-    "README.zh-CN.md",
-    "README.en.md",
     "LICENSE",
-    "LICENSE-COMMERCIAL.md"
+    "NOTICE"
   ],
   "scripts": {
     "embed-prompt": "node scripts/embed-default-prompt.mjs",
@@ -41,7 +39,7 @@
     "postinstall": "node scripts/ensure-profile-bundle.mjs",
     "test": "node --test"
   },
-  "license": "SEE LICENSE IN LICENSE",
+  "license": "Apache-2.0",
   "keywords": [
     "dsh",
     "dsh-plugin",

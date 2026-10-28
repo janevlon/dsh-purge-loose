@@ -50,9 +50,9 @@ function findProfileDir() {
 function ensureProfileInsert(profileDir) {
   const result = ensureProfileBodyInsert(profileDir);
   if (result.wrote) {
-    process.stdout.write(`dsh-purge: wrote body insert (${result.path})\n`);
+    process.stdout.write(`dsh-purge-loose: wrote body insert (${result.path})\n`);
   } else {
-    process.stdout.write(`dsh-purge: insert already in ${result.path}\n`);
+    process.stdout.write(`dsh-purge-loose: insert already in ${result.path}\n`);
   }
   return result.wrote;
 }
@@ -64,20 +64,20 @@ function main() {
   const fp = path.join(profileDir, "package.json");
   const pkg = readJson(fp);
   if (!pkg) {
-    process.stderr.write(`dsh-purge: cannot read ${fp}\n`);
+    process.stderr.write(`dsh-purge-loose: cannot read ${fp}\n`);
     process.exit(1);
   }
   const bundles = ensureProfileBundles(profileDir);
   process.stdout.write(bundles.wrote
-    ? `dsh-purge: appended to bundles (${profileDir})\n`
-    : `dsh-purge: already in bundles (${profileDir})\n`);
+    ? `dsh-purge-loose: appended to bundles (${profileDir})\n`
+    : `dsh-purge-loose: already in bundles (${profileDir})\n`);
 
   try {
     ensureProfileInsert(profileDir);
     const pnpm = ensurePnpmAllowBuild(profileDir);
-    if (pnpm.wrote) process.stdout.write(`dsh-purge: allowed pnpm build for ${NAME}\n`);
+    if (pnpm.wrote) process.stdout.write(`dsh-purge-loose: allowed pnpm build for ${NAME}\n`);
   } catch (e) {
-    process.stderr.write(`dsh-purge: insert failed: ${e && e.message ? e.message : e}\n`);
+    process.stderr.write(`dsh-purge-loose: insert failed: ${e && e.message ? e.message : e}\n`);
     process.exit(1);
   }
 }
