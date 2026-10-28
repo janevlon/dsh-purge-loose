@@ -2,7 +2,7 @@
   "name": "dsh-purge-loose",
   "version": "0.1.0",
   "description": "DeepSeek Harness 破甲（宽松版）. Forked from YuJunZhiXue/dsh-purge.",
-  "author": "bamboostrip",
+  "author": "janevlon",
   "packageManager": "pnpm@12.8.1",
   "type": "module",
   "main": "lib/index.js",
@@ -57,11 +57,11 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bamboostrip/dsh-purge-loose.git"
+    "url": "git+https://github.com/janevlon/dsh-purge-loose.git"
   },
-  "homepage": "https://github.com/bamboostrip/dsh-purge-loose#readme",
+  "homepage": "https://github.com/janevlon/dsh-purge-loose#readme",
   "bugs": {
-    "url": "https://github.com/bamboostrip/dsh-purge-loose/issues"
+    "url": "https://github.com/janevlon/dsh-purge-loose/issues"
   },
   "dsh": {
     "bundle": {
@@ -79,9 +79,9 @@
     },
     "install": {
       "preferred": "tarball",
-      "tarball": "https://codeload.github.com/bamboostrip/dsh-purge-loose/tar.gz/refs/heads/master",
-      "zip": "https://codeload.github.com/bamboostrip/dsh-purge-loose/zip/refs/heads/master",
-      "git": "https://github.com/bamboostrip/dsh-purge-loose.git"
+      "tarball": "https://codeload.github.com/janevlon/dsh-purge-loose/tar.gz/refs/heads/master",
+      "zip": "https://codeload.github.com/janevlon/dsh-purge-loose/zip/refs/heads/master",
+      "git": "https://github.com/janevlon/dsh-purge-loose.git"
     }
   },
   "publishConfig": {
